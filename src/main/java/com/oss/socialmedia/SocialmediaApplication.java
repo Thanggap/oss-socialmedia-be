@@ -12,21 +12,12 @@ import io.github.cdimascio.dotenv.DotenvException;
 public class SocialmediaApplication {
 
 	public static void main(String[] args) {
-		// Initialize with null to handle case where .env file isn't found
-		String apiKey = null;
-
-		try {
-			// Try to load environment variables from .env file
-			Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
-			apiKey = dotenv.get("SENDINBLUE_API_KEY");
-		} catch (DotenvException e) {
-			// Fallback to system environment variables
-			apiKey = System.getenv("SENDINBLUE_API_KEY");
-		}
-
-		// Set the environment variable for Spring if available
+		// Initialize the SpringApplication
 		SpringApplication app = new SpringApplication(SocialmediaApplication.class);
-
+		
+		// Try to get the API key
+		final String apiKey = getApiKey();
+		
 		// Only set the property if apiKey is not null
 		if (apiKey != null) {
 			app.addInitializers(applicationContext -> {
@@ -34,7 +25,22 @@ public class SocialmediaApplication {
 				env.getSystemProperties().put("SENDINBLUE_API_KEY", apiKey);
 			});
 		}
-
+		
 		app.run(args);
+	}
+	
+	/**
+	 * Attempts to retrieve the API key from .env file or system environment
+	 * @return The API key or null if not found
+	 */
+	private static String getApiKey() {
+		try {
+			// Try to load environment variables from .env file
+			Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+			return dotenv.get("SENDINBLUE_API_KEY");
+		} catch (DotenvException e) {
+			// Fallback to system environment variables
+			return System.getenv("SENDINBLUE_API_KEY");
+		}
 	}
 }
