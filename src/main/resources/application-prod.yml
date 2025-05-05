@@ -7,6 +7,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://thangenz0507:6Rwr6k5YtI9GDGor@cluster0.n9xse7y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0  # MongoDB connection URI
+      database: social_media_db
   servlet:
     multipart:
       max-file-size: 300MB
