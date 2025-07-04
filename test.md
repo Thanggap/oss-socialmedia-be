@@ -1,4 +1,6 @@
 postpaid_active_policy
+<details>
+  <summary>Click để xem JSON</summary>
  ```json 
 {
   "responseVersion": 1751600396609,
