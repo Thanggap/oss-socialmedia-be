@@ -418,6 +418,8 @@ postpaid_active_policy
 }
 ```
 postpaid_active_to_idle_policy
+  <details>
+  <summary>Click để xem JSON</summary>
  ```json 
 {
   "responseVersion": 1751604023650,
