@@ -414,8 +414,8 @@
   }
 }
 ```
-
- ```json postpaid_active_to_idle_policy
+postpaid_active_to_idle_policy
+ ```json 
 {
   "responseVersion": 1751604023650,
   "policyModel": {
