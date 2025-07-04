@@ -1,4 +1,5 @@
- ```json postpaid_active_policy
+postpaid_active_policy
+ ```json 
 {
   "responseVersion": 1751600396609,
   "policyModel": {
